@@ -5,7 +5,7 @@ class Display extends Component {
     return (
       <div className="display">
         <div className="display__current">
-          {this.props.calculation.join(" ")}
+          {this.props.calculation}
         </div>
         <div className="display__result">{this.props.sum}</div>
       </div>

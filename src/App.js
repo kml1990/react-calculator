@@ -24,20 +24,16 @@ class App extends Component {
     })
   }
   
-  sum = (calculation, type) => {
-    let result = calculation.join('');
-    if (result) {
-      if(type == "equal"){
-        result = math.eval(result);
-      } else if(type == "perc"){
-        result = result * 0.01;
-      }
+  sum = (calculation) => {
+
+    if(String(calculation).length === 0) {
+      calculation = 0;
     } else {
-      result = 0;
+      calculation = math.eval(calculation);
     }
-    
+
     this.setState({
-       sum: result
+       sum: calculation
     })
   }
 

@@ -18,36 +18,66 @@ class Controls extends Component {
       case 'clear' :
         
         this.setState({ calculation: [] }, () => {
-          this.props.triggerSum(this.state.calculation);
           this.props.triggerCalculation(this.state.calculation);
+          this.props.triggerSum(this.state.calculation);
         });
         
         break;
       case '=' :
-        this.props.triggerSum(this.state.calculation, "equal");
-        this.setState({ calculation: [] }, () => {
-          this.props.triggerCalculation(this.state.calculation);
+
+        if(isNaN(this.state.calculation[this.state.calculation.length - 1])) {
+          break;
+        }
+
+        this.props.triggerSum(this.state.calculation.join(''));
+        this.setState({ 
+          calculation: [] 
+        }, () => {
+          this.props.triggerCalculation(this.state.calculation.join(''));
         });
+
         break;
       case 'posNeg' :
-        console.log('posNeg');
+
+        let posNeg = [[...this.state.calculation].join('') * -1];
+        this.setState({ 
+          calculation: posNeg
+        }, () => {
+          this.props.triggerCalculation(this.state.calculation.join(''));
+        });
+
         break;
       case 'perc' :
-        this.props.triggerSum(this.state.calculation, "perc");
+
+        let percentage = [[...this.state.calculation].join('') * 0.01];
+        
+        this.setState({ 
+          calculation: percentage
+        }, () => {
+          this.props.triggerCalculation(this.state.calculation.join(''));
+        });
+
         break;
       case 'back' :
-        // this.setState({ calculation: this.state.calculation.splice(this.state.calculation.length -1, 1) }, () => {
-        //   this.props.triggerCalculation(this.state.calculation);
-        // });
+
+        let removeLast = [...this.state.calculation];
+        removeLast.splice(removeLast.length - 1, 1);
+
+        this.setState({
+          calculation: removeLast
+        }, () => {
+          this.props.triggerCalculation(this.state.calculation.join(''));
+        });
         break;
+
       default :
-        
-        if(this.state.calculation.length == 0){
-          this.props.triggerSum([], "equal");
+      
+        if(isNaN(value) && isNaN(this.state.calculation[this.state.calculation.length - 1])) {
+          break;
         }
 
         this.setState({ calculation: [...this.state.calculation, value] }, () => {
-          this.props.triggerCalculation(this.state.calculation);
+          this.props.triggerCalculation(this.state.calculation.join(''));
         });
         
         break;
