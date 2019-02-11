@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class Display extends Component {
-  render() {
+const Display = props => {
     return (
       <div className="display">
         <div className="display__current">
-          {this.props.calculation}
+          {props.calculation}
         </div>
-        <div className="display__result">{this.props.sum}</div>
+        <div className="display__result">{props.sum}</div>
       </div>
     );
-  }
 }
 
 export default Display;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import Display from './Components/Display';
-import Controls from './Components/Controls';
+import Display from '../Components/Display';
+import Controls from './Controls';
 
 import math from 'mathjs';
 
-import './App.scss';
+import '../App.scss';
 
 class App extends Component {
 
