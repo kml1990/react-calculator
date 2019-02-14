@@ -3,12 +3,12 @@ import React from "react";
 const Button = props => {
     const styles = "controls__item " + props.color;
     return (
-      <a
+      <button
         onClick={props.onClick}
         className={styles}
-        data-value={props.value}>
+        value={props.value}>
         {props.name}
-      </a>
+      </button>
     );
 }
 

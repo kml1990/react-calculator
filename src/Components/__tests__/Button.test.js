@@ -12,13 +12,13 @@ describe("Render buttons", function() {
     let mountedButton = shallow(<Button />)
   });
 
-  it('renders a anchor button', () => {
-    const anchorButton = mountedButton.find('a');
+  it('renders an anchor button', () => {
+    const anchorButton = mountedButton.find('button');
     expect(anchorButton.length).toBe(1);
   });
 });
 
-describe("When name and value are passed to it", function() {
+describe("When events are added to button", function() {
   let mountedButton;
   let props;
 
@@ -31,14 +31,18 @@ describe("When name and value are passed to it", function() {
     mountedButton = shallow(<Button name={props.name} value={props.value} />)
   });
 
-  // it('it displays correct symbol when passed name', () => {
-  //   expect(mountedButton.name()).to.equal('=');
-  // });
+  it('it displays correct symbol when passed name', () => {
+    const anchorButton = mountedButton.find('button')
+    
+    expect(anchorButton.text()).toBe('=')
+  });
 
-  // it('it sets correct value', () => {
-  //   const equal = mountedButton.find('.controls__item');
-  //   expect(equal).to.have.property('value', '=');
-  // });
+  it('call a function passed to it when clicked', ()=> {
+    const mockCallBack = jest.fn();
+    const mountedButtonWithCallBack = shallow(<Button onClick={mockCallBack} />)
+    mountedButtonWithCallBack.find('button').simulate('click');
+    expect(mockCallBack.mock.calls.length).toEqual(1);
+  })
   
 });
 

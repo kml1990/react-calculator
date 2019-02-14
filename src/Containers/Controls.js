@@ -11,8 +11,9 @@ class Controls extends Component {
   }
   
   handleClick = e => {
-    const value = e.target.getAttribute("data-value");
     
+    console.log(e.target.value)
+    const value = e.target.value;
     switch(value)
     {
       case 'clear' :

@@ -6,10 +6,12 @@
   box-shadow: 0px 20px 120px -20px rgba(0, 0, 0, 0.7);
 }
 
+$font-family: "Quicksand", sans-serif;
+
 $bg-color-red: #ff5f6d;
 $bg-color-orange: #ffc371;
 $display-color: #333a4d;
-$transparent-white: rgba(255, 255, 255, 0.2);
+$transparent-white: rgba(255, 255, 255, 0.6);
 $light-grey: #eee;
 $medium-grey: #ccc;
 $light-orange: #fea170;
@@ -21,7 +23,7 @@ $results-font-size: 52px;
 body {
   height: 100vh;
   margin: 0;
-  font-family: "Quicksand", sans-serif;
+  font-family: $font-family;
   font-size: 20px;
   background: $bg-color-red; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -82,9 +84,11 @@ body {
     grid-template-columns: repeat(4, 25%);
     height: 70%;
     &__item {
+      font: 400 20px $font-family;
       display: flex;
       justify-content: center;
       align-items: center;
+      border: 0;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       border-right: 1px solid rgba(0, 0, 0, 0.05);
       cursor: pointer;
